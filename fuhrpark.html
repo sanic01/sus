@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LSCFD Fahrzeugliste</title>
+    <style>
+        :root {
+            --primary-red: #c0392b;
+            --dark-bg: #121212;
+            --card-bg: #1e1e1e;
+            --text-main: #e0e0e0;
+            --accent-yellow: #f1c40f;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            width: 100%;
+            max-width: 1200px;
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 4px solid var(--primary-red);
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--primary-red);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .subtitle {
+            font-size: 1.1em;
+            color: var(--accent-yellow);
+            margin-top: 10px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .fleet-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .vehicle-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+            transition: all 0.3s ease;
+            border: 1px solid #333;
+            position: relative;
+        }
+
+        .vehicle-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-red);
+            box-shadow: 0 15px 30px rgba(192, 57, 43, 0.2);
+        }
+
+        .image-box {
+            width: 100%;
+            height: 200px;
+            background: #2a2a2a;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 3px solid var(--primary-red);
+        }
+
+        .image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .image-placeholder {
+            color: #888;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.85em;
+        }
+
+        .info-box {
+            padding: 20px;
+        }
+
+        .vehicle-id {
+            font-size: 1.6em;
+            font-weight: 900;
+            color: #fff;
+            margin: 0 0 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .specs {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 0.9em;
+            color: #bbb;
+        }
+
+        .specs li {
+            margin-bottom: 5px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .specs li span {
+            color: var(--accent-yellow);
+            font-weight: bold;
+        }
+
+        .status-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #27ae60;
+            color: white;
+            padding: 3px 12px;
+            border-radius: 20px;
+            font-size: 0.7em;
+            font-weight: bold;
+            text-transform: uppercase;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Los Santos County Fire Dept.</h1>
+    <div class="subtitle">Offizielles Fahrzeug-Verzeichnis</div>
+</header>
+
+<div class="fleet-container">
+    
+    <!-- Fahrzeug: fdtank -->
+    <div class="vehicle-card">
+        <div class="status-badge">Einsatzbereit</div>
+        <div class="image-box">
+            <img src="image_7256dc.jpg" alt="fdtank" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div class="image-placeholder" style="display:none;">
+                ⚠️ <strong>Bildfehler</strong><br>
+                Datei "image_7256dc.jpg" nicht gefunden.<br>
+                <small>Prüfe, ob Bild und HTML im selben Ordner liegen.</small>
+            </div>
+        </div>
+        <div class="info-box">
+            <h2 class="vehicle-id">fdtank</h2>
+            <ul class="specs">
+                <li>Typ: <span>Heavy Tanker</span></li>
+                <li>Einheit: <span>Station 4</span></li>
+                <li>Ausrüstung: <span>3000 Gal. Wasser</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Fahrzeug: nsandbrush4 -->
+    <div class="vehicle-card">
+        <div class="status-badge">Einsatzbereit</div>
+        <div class="image-box">
+            <img src="image_72ce69.jpg" alt="nsandbrush4" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div class="image-placeholder" style="display:none;">
+                ⚠️ <strong>Bildfehler</strong><br>
+                Datei "image_72ce69.jpg" nicht gefunden.<br>
+                <small>Prüfe, ob Bild und HTML im selben Ordner liegen.</small>
+            </div>
+        </div>
+        <div class="info-box">
+            <h2 class="vehicle-id">nsandbrush4</h2>
+            <ul class="specs">
+                <li>Typ: <span>Brush Unit (Geländewagen)</span></li>
+                <li>Einheit: <span>Wildfire Division</span></li>
+                <li>Besonderheit: <span>Allradantrieb</span></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
