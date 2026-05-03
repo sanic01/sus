@@ -106,7 +106,7 @@
             font-size: 0.9rem;
         }
 
-        /* Fleet Grid - Geändert auf exakt 3 Spalten */
+        /* Fleet Grid - Exakt 3 Spalten */
         .container {
             max-width: 1300px;
             margin: 50px auto;
@@ -119,7 +119,7 @@
             gap: 35px;
         }
 
-        /* Responsive Anpassung für kleinere Bildschirme */
+        /* Responsive Anpassung */
         @media (max-width: 1100px) {
             .fleet-grid { grid-template-columns: repeat(2, 1fr); }
         }
@@ -137,18 +137,17 @@
             position: relative;
         }
 
-        /* Hover-Effekt: Hervorhebung mit roter Umrandung und Schatten-Leuchten */
+        /* Hover-Effekt: Rote Umrandung und Leuchten */
         .card:hover {
             transform: translateY(-12px) scale(1.02);
             border-color: var(--primary-red);
             box-shadow: 0 0 25px rgba(192, 57, 43, 0.4), 0 20px 40px rgba(0,0,0,0.7);
-            background-color: #241616; /* Leichter rötlicher Hintergrund-Akzent */
+            background-color: #241616;
         }
 
         .card.fire { border-top: 5px solid var(--primary-red); }
         .card.police { border-top: 5px solid var(--primary-blue); }
         
-        /* Bei Polizei-Hover eher blaues Leuchten */
         .card.police:hover {
             border-color: var(--primary-blue);
             box-shadow: 0 0 25px rgba(41, 128, 185, 0.4), 0 20px 40px rgba(0,0,0,0.7);
@@ -203,7 +202,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
         .v-dept {
@@ -218,7 +217,7 @@
         .police .v-dept { background: rgba(41, 128, 185, 0.1); color: var(--primary-blue); }
 
         .v-name {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             margin: 0;
             color: #fff;
             font-weight: 800;
@@ -229,6 +228,7 @@
             font-size: 0.85rem;
             margin-top: 5px;
             display: block;
+            font-weight: 600;
         }
 
         .v-stats {
@@ -237,7 +237,7 @@
             border-top: 1px solid #2a2a2a;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 10px;
+            gap: 15px;
         }
 
         .stat-item {
@@ -249,6 +249,11 @@
             color: #bbb;
             display: block;
             font-size: 0.85rem;
+            margin-top: 2px;
+        }
+
+        .stat-full {
+            grid-column: span 2;
         }
 
         footer {
@@ -261,7 +266,6 @@
             border-top: 1px solid #1a1a1a;
         }
 
-        /* Filtering animation */
         .card {
             display: block;
             animation: fadeIn 0.5s ease forwards;
@@ -292,11 +296,11 @@
     <div class="container">
         <div class="fleet-grid" id="fleetGrid">
             
-            <!-- FEUERWEHR: fdtank -->
+            <!-- FEUERWEHR: LSFD Firetruck -->
             <div class="card fire" data-dept="fire">
                 <div class="card-image">
                     <span class="status-badge">Einsatzbereit</span>
-                    <img src="image_7256dc.jpg" alt="fdtank" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <img src="image_7256dc.jpg" alt="LSFD Firetruck" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                     <div class="image-error" style="display:none;">
                         <strong>BILD NICHT GEFUNDEN</strong>
                         <p>image_7256dc.jpg</p>
@@ -306,21 +310,23 @@
                     <div class="v-meta">
                         <span class="v-dept">LSCFD - Station 4</span>
                     </div>
-                    <h3 class="v-name">fdtank</h3>
-                    <span class="v-type">Heavy Water Tender</span>
+                    <h3 class="v-name">LSFD Firetruck</h3>
+                    <span class="v-type">Großes Löschfahrzeug</span>
                     
                     <div class="v-stats">
-                        <div class="stat-item">Besatzung<b>1-2 Personen</b></div>
-                        <div class="stat-item">Tankinhalt<b>3000 Gal.</b></div>
+                        <div class="stat-item">Modell<b>fdtank</b></div>
+                        <div class="stat-item">Besatzung<b>7 Personen</b></div>
+                        <div class="stat-item">Tankgröße<b>9000L</b></div>
+                        <div class="stat-item stat-full">Besonderheit<b>Großer Wassertank</b></div>
                     </div>
                 </div>
             </div>
 
-            <!-- FEUERWEHR: nsandbrush4 -->
+            <!-- FEUERWEHR: Fire Support Pickup -->
             <div class="card fire" data-dept="fire">
                 <div class="card-image">
                     <span class="status-badge">Einsatzbereit</span>
-                    <img src="image_72ce69.jpg" alt="nsandbrush4" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <img src="image_72ce69.jpg" alt="Fire Support Pickup" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                     <div class="image-error" style="display:none;">
                         <strong>BILD NICHT GEFUNDEN</strong>
                         <p>image_72ce69.jpg</p>
@@ -330,12 +336,40 @@
                     <div class="v-meta">
                         <span class="v-dept">LSCFD - Wildfire Unit</span>
                     </div>
-                    <h3 class="v-name">nsandbrush4</h3>
-                    <span class="v-type">Geländegängiges Löschfahrzeug</span>
+                    <h3 class="v-name">Fire Support Pickup</h3>
+                    <span class="v-type">Pickup Lösch Fahrzeug</span>
                     
                     <div class="v-stats">
-                        <div class="stat-item">Antrieb<b>Allrad 4x4</b></div>
-                        <div class="stat-item">Einsatzgebiet<b>Offroad / Bush</b></div>
+                        <div class="stat-item">Modell<b>nsandbrush4</b></div>
+                        <div class="stat-item">Besatzung<b>4 Personen</b></div>
+                        <div class="stat-item">Tankgröße<b>2500L</b></div>
+                        <div class="stat-item stat-full">Besonderheit<b>Kann als Geländefahrzeug eingesetzt werden</b></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FEUERWEHR: DLK 24/02 -->
+            <div class="card fire" data-dept="fire">
+                <div class="card-image">
+                    <span class="status-badge">Einsatzbereit</span>
+                    <img src="dlk01.jpg" alt="DLK 24/02" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="image-error" style="display:none;">
+                        <strong>BILD NICHT GEFUNDEN</strong>
+                        <p>dlk01.jpg</p>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="v-meta">
+                        <span class="v-dept">LSCFD - Aerial Unit</span>
+                    </div>
+                    <h3 class="v-name">DLK 24/02</h3>
+                    <span class="v-type">Drehleiter</span>
+                    
+                    <div class="v-stats">
+                        <div class="stat-item">Modell<b>mmladder</b></div>
+                        <div class="stat-item">Besatzung<b>5 Personen</b></div>
+                        <div class="stat-item">Tankgröße<b>--</b></div>
+                        <div class="stat-item stat-full">Besonderheit<b>Besitzt eine Große Drehleiter</b></div>
                     </div>
                 </div>
             </div>
@@ -353,12 +387,14 @@
                     <div class="v-meta">
                         <span class="v-dept">LSPD - Patrol</span>
                     </div>
-                    <h3 class="v-name">lspd_cruiser</h3>
+                    <h3 class="v-name">LSPD Cruiser</h3>
                     <span class="v-type">Standard Interceptor</span>
                     
                     <div class="v-stats">
+                        <div class="stat-item">Modell<b>lspd_cruiser</b></div>
+                        <div class="stat-item">Besatzung<b>2 Personen</b></div>
                         <div class="stat-item">Motor<b>V8 High Perf.</b></div>
-                        <div class="stat-item">Status<b>Patrouille</b></div>
+                        <div class="stat-item stat-full">Besonderheit<b>Standard Patrouillenfahrzeug</b></div>
                     </div>
                 </div>
             </div>
@@ -376,10 +412,8 @@
             const buttons = document.querySelectorAll('.nav-links button');
             const nav = document.getElementById('navbar');
             
-            // Buttons zurücksetzen
             buttons.forEach(b => b.classList.remove('active-fire', 'active-police'));
             
-            // Navbar Farbe und aktiven Button anpassen
             if(dept === 'fire') {
                 btn.classList.add('active-fire');
                 nav.style.borderBottomColor = 'var(--primary-red)';
@@ -391,7 +425,6 @@
                 nav.style.borderBottomColor = 'var(--primary-red)';
             }
 
-            // Karten filtern
             cards.forEach(card => {
                 if (dept === 'all' || card.getAttribute('data-dept') === dept) {
                     card.style.display = 'block';
