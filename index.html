@@ -409,48 +409,73 @@
         <div class="law-container">
             <input type="text" class="search-bar" placeholder="Nach Paragraphen oder Tatbestand suchen..." onkeyup="searchLaws(this.value)">
             
-            <!-- Sektion: Straßenverkehrsordnung -->
+            <!-- Sektion: Definitionen -->
             <div class="law-section">
-                <div class="law-section-header">Abschnitt 1: Straßenverkehrsordnung (StVO)</div>
-                <table class="law-table" id="table-laws-1">
+                <div class="law-section-header">Abschnitt 0: Definitionen</div>
+                <table class="law-table">
                     <thead>
                         <tr>
                             <th>§</th>
-                            <th>Tatbestand</th>
-                            <th>Beschreibung</th>
-                            <th>Bußgeld</th>
-                            <th>Haftzeit</th>
+                            <th>Begriff</th>
+                            <th>Definition</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr class="law-row">
-                            <td class="law-id">1.1</td>
-                            <td class="law-name">Fahren ohne Führerschein</td>
-                            <td>Führen eines KFZ ohne gültige Fahrerlaubnis.</td>
-                            <td class="law-price">$5.000</td>
-                            <td class="law-time">-</td>
+                            <td class="law-id">0.1</td>
+                            <td class="law-name">Rauschmittel</td>
+                            <td>Unter Rauschmittel fallen alle Substanzen, die die Wahrnehmung oder das Reaktionsvermögen beeinflussen. Dazu zählen insbesondere <b>Alkohol</b>, Marihuana sowie alle weiteren illegalen Betäubungsmittel.</td>
                         </tr>
                         <tr class="law-row">
-                            <td class="law-id">1.2</td>
-                            <td class="law-name">Überhöhte Geschwindigkeit</td>
-                            <td>Überschreiten der zulässigen Höchstgeschwindigkeit.</td>
-                            <td class="law-price">$1.500</td>
-                            <td class="law-time">-</td>
-                        </tr>
-                        <tr class="law-row">
-                            <td class="law-id">1.3</td>
-                            <td class="law-name">Falschparken</td>
-                            <td>Abstellen des Fahrzeugs in Parkverbotszonen.</td>
-                            <td class="law-price">$500</td>
-                            <td class="law-time">-</td>
+                            <td class="law-id">0.2</td>
+                            <td class="law-name">Waffenklassen</td>
+                            <td>
+                                Waffen werden in folgende Kategorien unterteilt:<br>
+                                <b>Klasse A:</b> Handfeuerwaffen (Pistolen, Revolver)<br>
+                                <b>Klasse B:</b> Leichte Maschinengewehre (MP, SMG)<br>
+                                <b>Klasse C:</b> Schwere Sturmgewehre (AR, Karabiner)<br>
+                                <b>Klasse D:</b> Schrotflinten (Shotguns)<br>
+                                <b>Klasse E:</b> Explosive Waffen (Granaten, RPGs, C4)
+                            </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
-            <!-- Sektion: Strafgesetzbuch -->
+            <!-- Sektion: Allgemeine Bestimmungen & LEO Infos -->
             <div class="law-section">
-                <div class="law-section-header">Abschnitt 2: Strafgesetzbuch (StGB)</div>
+                <div class="law-section-header">Abschnitt 1: Allgemeine Bestimmungen & Befugnisse</div>
+                <table class="law-table">
+                    <thead>
+                        <tr>
+                            <th>§</th>
+                            <th>Bezeichnung</th>
+                            <th>Inhalt / Regelung</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="law-row">
+                            <td class="law-id">1.1</td>
+                            <td class="law-name">LEO Befugnisse (StVO)</td>
+                            <td>Jeder <b>LEO (Law Enforcement Officer)</b> ist berechtigt, bei Verstößen gegen die StVO Punkte gegen den Fahrzeughalter zu verhängen. Die Anzahl der Punkte liegt im Ermessen des Beamten (Schwere der Tat), beträgt jedoch <b>maximal 3 Punkte</b> pro Verstoß.</td>
+                        </tr>
+                        <tr class="law-row">
+                            <td class="law-id">1.2</td>
+                            <td class="law-name">Führerscheinentzug</td>
+                            <td>Sobald ein Bürger eine kumulierte Punktzahl von <b>10 Punkten</b> erreicht, wird die Fahrerlaubnis mit sofortiger Wirkung entzogen. Eine Neubeantragung ist erst nach Ablauf einer Sperrfrist möglich.</td>
+                        </tr>
+                        <tr class="law-row">
+                            <td class="law-id">1.3</td>
+                            <td class="law-name">Strafmaß & Ermessensspielraum</td>
+                            <td>Ein LEO darf die Strafe innerhalb des gesetzlichen Rahmens selbst festlegen. Das verhängte <b>Bußgeld</b> oder die <b>Haftzeit</b> darf die in diesem Katalog aufgeführten Vorgaben jedoch <b>nicht überschreiten</b>. Die angegebenen Werte gelten als Höchstmaß.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Sektion: Straßenverkehrsordnung -->
+            <div class="law-section">
+                <div class="law-section-header">Abschnitt 2: Straßenverkehrsordnung (StVO)</div>
                 <table class="law-table" id="table-laws-2">
                     <thead>
                         <tr>
@@ -464,27 +489,66 @@
                     <tbody>
                         <tr class="law-row">
                             <td class="law-id">2.1</td>
+                            <td class="law-name">Fahren ohne Führerschein</td>
+                            <td>Führen eines KFZ ohne gültige Fahrerlaubnis.</td>
+                            <td class="law-price">$5.000</td>
+                            <td class="law-time">-</td>
+                        </tr>
+                        <tr class="law-row">
+                            <td class="law-id">2.2</td>
+                            <td class="law-name">Überhöhte Geschwindigkeit</td>
+                            <td>Überschreiten der zulässigen Höchstgeschwindigkeit.</td>
+                            <td class="law-price">$1.500</td>
+                            <td class="law-time">-</td>
+                        </tr>
+                        <tr class="law-row">
+                            <td class="law-id">2.3</td>
+                            <td class="law-name">Falschparken</td>
+                            <td>Abstellen des Fahrzeugs in Parkverbotszonen.</td>
+                            <td class="law-price">$500</td>
+                            <td class="law-time">-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Sektion: Strafgesetzbuch -->
+            <div class="law-section">
+                <div class="law-section-header">Abschnitt 3: Strafgesetzbuch (StGB)</div>
+                <table class="law-table" id="table-laws-3">
+                    <thead>
+                        <tr>
+                            <th>§</th>
+                            <th>Tatbestand</th>
+                            <th>Beschreibung</th>
+                            <th>Bußgeld</th>
+                            <th>Haftzeit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="law-row">
+                            <td class="law-id">3.1</td>
                             <td class="law-name">Beleidigung</td>
                             <td>Ehrverletzende Äußerungen gegenüber Bürgern/Beamten.</td>
                             <td class="law-price">$2.000</td>
                             <td class="law-time">-</td>
                         </tr>
                         <tr class="law-row">
-                            <td class="law-id">2.2</td>
+                            <td class="law-id">3.2</td>
                             <td class="law-name">Körperverletzung</td>
                             <td>Physische Gewaltanwendung gegen eine Person.</td>
                             <td class="law-price">$10.000</td>
                             <td class="law-time">15 Min</td>
                         </tr>
                         <tr class="law-row">
-                            <td class="law-id">2.3</td>
+                            <td class="law-id">3.3</td>
                             <td class="law-name">Widerstand gegen Staatsgewalt</td>
                             <td>Missachtung polizeilicher Anweisungen oder Flucht.</td>
                             <td class="law-price">$7.500</td>
                             <td class="law-time">10 Min</td>
                         </tr>
                         <tr class="law-row">
-                            <td class="law-id">2.4</td>
+                            <td class="law-id">3.4</td>
                             <td class="law-name">Mord / Totschlag</td>
                             <td>Vorsätzliche Tötung einer Person.</td>
                             <td class="law-price">$50.000</td>
