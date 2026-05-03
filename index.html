@@ -3,201 +3,403 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LSCFD Fahrzeugliste</title>
+    <title>FiveM RP - Fuhrpark Management</title>
     <style>
         :root {
             --primary-red: #c0392b;
-            --dark-bg: #121212;
-            --card-bg: #1e1e1e;
+            --primary-blue: #2980b9;
+            --dark-bg: #0f1011;
+            --card-bg: #1c1e20;
             --text-main: #e0e0e0;
             --accent-yellow: #f1c40f;
+            --nav-bg: #16181a;
         }
 
         body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Segoe UI', Roboto, sans-serif;
             background-color: var(--dark-bg);
             color: var(--text-main);
             margin: 0;
-            padding: 20px;
             display: flex;
             flex-direction: column;
-            align-items: center;
+            min-height: 100vh;
         }
 
+        /* Navigation */
+        nav {
+            background: var(--nav-bg);
+            padding: 0 50px;
+            height: 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid var(--primary-red);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        .logo {
+            font-weight: 900;
+            font-size: 1.4rem;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            height: 100%;
+        }
+
+        .nav-links button {
+            background: none;
+            border: none;
+            color: #aaa;
+            padding: 0 25px;
+            cursor: pointer;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+            height: 100%;
+            border-bottom: 3px solid transparent;
+        }
+
+        .nav-links button:hover {
+            color: #fff;
+            background: rgba(255,255,255,0.05);
+        }
+
+        .nav-links button.active-fire {
+            border-bottom-color: var(--primary-red);
+            color: var(--primary-red);
+        }
+
+        .nav-links button.active-police {
+            border-bottom-color: var(--primary-blue);
+            color: var(--primary-blue);
+        }
+
+        /* Header */
         header {
-            width: 100%;
-            max-width: 1200px;
             text-align: center;
-            padding: 40px 0;
-            border-bottom: 4px solid var(--primary-red);
-            margin-bottom: 40px;
+            padding: 80px 20px;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1566367576585-051277d52997?q=80&w=2070') center/cover;
+            border-bottom: 1px solid #333;
         }
 
         h1 {
+            font-size: 2.8rem;
             margin: 0;
-            font-size: 2.5em;
+            color: white;
             text-transform: uppercase;
-            letter-spacing: 4px;
-            color: var(--primary-red);
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            letter-spacing: 5px;
         }
 
-        .subtitle {
-            font-size: 1.1em;
+        .header-status {
             color: var(--accent-yellow);
-            margin-top: 10px;
             font-weight: bold;
-            letter-spacing: 1px;
+            margin-top: 10px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
         }
 
-        .fleet-container {
+        /* Fleet Grid - Geändert auf exakt 3 Spalten */
+        .container {
+            max-width: 1300px;
+            margin: 50px auto;
+            padding: 0 30px;
+        }
+
+        .fleet-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 30px;
-            width: 100%;
-            max-width: 1200px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 35px;
         }
 
-        .vehicle-card {
+        /* Responsive Anpassung für kleinere Bildschirme */
+        @media (max-width: 1100px) {
+            .fleet-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 750px) {
+            .fleet-grid { grid-template-columns: 1fr; }
+        }
+
+        .card {
             background: var(--card-bg);
-            border-radius: 12px;
+            border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
-            transition: all 0.3s ease;
-            border: 1px solid #333;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            border: 1px solid #2a2a2a;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
         }
 
-        .vehicle-card:hover {
-            transform: translateY(-10px);
+        /* Hover-Effekt: Hervorhebung mit roter Umrandung und Schatten-Leuchten */
+        .card:hover {
+            transform: translateY(-12px) scale(1.02);
             border-color: var(--primary-red);
-            box-shadow: 0 15px 30px rgba(192, 57, 43, 0.2);
+            box-shadow: 0 0 25px rgba(192, 57, 43, 0.4), 0 20px 40px rgba(0,0,0,0.7);
+            background-color: #241616; /* Leichter rötlicher Hintergrund-Akzent */
         }
 
-        .image-box {
+        .card.fire { border-top: 5px solid var(--primary-red); }
+        .card.police { border-top: 5px solid var(--primary-blue); }
+        
+        /* Bei Polizei-Hover eher blaues Leuchten */
+        .card.police:hover {
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 25px rgba(41, 128, 185, 0.4), 0 20px 40px rgba(0,0,0,0.7);
+            background-color: #161a24;
+        }
+
+        .card-image {
             width: 100%;
-            height: 200px;
-            background: #2a2a2a;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-bottom: 3px solid var(--primary-red);
+            height: 220px;
+            background: #111;
+            position: relative;
         }
 
-        .image-box img {
+        .card-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        .image-placeholder {
-            color: #888;
-            text-align: center;
-            padding: 20px;
-            font-size: 0.85em;
-        }
-
-        .info-box {
-            padding: 20px;
-        }
-
-        .vehicle-id {
-            font-size: 1.6em;
-            font-weight: 900;
-            color: #fff;
-            margin: 0 0 10px 0;
+        .image-error {
+            position: absolute;
+            inset: 0;
             display: flex;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            justify-content: space-between;
-        }
-
-        .specs {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            font-size: 0.9em;
-            color: #bbb;
-        }
-
-        .specs li {
-            margin-bottom: 5px;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .specs li span {
-            color: var(--accent-yellow);
-            font-weight: bold;
+            padding: 20px;
+            text-align: center;
+            font-size: 0.75rem;
+            background: #1a1a1a;
+            color: #666;
         }
 
         .status-badge {
             position: absolute;
-            top: 10px;
-            right: 10px;
+            top: 15px;
+            left: 15px;
             background: #27ae60;
             color: white;
-            padding: 3px 12px;
-            border-radius: 20px;
-            font-size: 0.7em;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.65rem;
             font-weight: bold;
             text-transform: uppercase;
-            z-index: 10;
+        }
+
+        .card-content {
+            padding: 25px;
+        }
+
+        .v-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .v-dept {
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            padding: 3px 8px;
+            border-radius: 3px;
+        }
+
+        .fire .v-dept { background: rgba(192, 57, 43, 0.1); color: var(--primary-red); }
+        .police .v-dept { background: rgba(41, 128, 185, 0.1); color: var(--primary-blue); }
+
+        .v-name {
+            font-size: 1.6rem;
+            margin: 0;
+            color: #fff;
+            font-weight: 800;
+        }
+
+        .v-type {
+            color: #888;
+            font-size: 0.85rem;
+            margin-top: 5px;
+            display: block;
+        }
+
+        .v-stats {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #2a2a2a;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .stat-item {
+            font-size: 0.75rem;
+            color: #666;
+        }
+
+        .stat-item b {
+            color: #bbb;
+            display: block;
+            font-size: 0.85rem;
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 40px;
+            text-align: center;
+            background: #0a0a0a;
+            font-size: 0.75rem;
+            color: #444;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        /* Filtering animation */
+        .card {
+            display: block;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>Los Santos County Fire Dept.</h1>
-    <div class="subtitle">Offizielles Fahrzeug-Verzeichnis</div>
-</header>
-
-<div class="fleet-container">
-    
-    <!-- Fahrzeug: fdtank -->
-    <div class="vehicle-card">
-        <div class="status-badge">Einsatzbereit</div>
-        <div class="image-box">
-            <img src="image_7256dc.jpg" alt="fdtank" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <div class="image-placeholder" style="display:none;">
-                ⚠️ <strong>Bildfehler</strong><br>
-                Datei "image_7256dc.jpg" nicht gefunden.<br>
-                <small>Prüfe, ob Bild und HTML im selben Ordner liegen.</small>
-            </div>
+    <nav id="navbar">
+        <div class="logo">STATE OF SAN ANDREAS</div>
+        <div class="nav-links">
+            <button onclick="filterFleet('all', this)" class="active-fire">Alle Assets</button>
+            <button onclick="filterFleet('fire', this)">Feuerwehr</button>
+            <button onclick="filterFleet('police', this)">Polizei</button>
         </div>
-        <div class="info-box">
-            <h2 class="vehicle-id">fdtank</h2>
-            <ul class="specs">
-                <li>Typ: <span>Heavy Tanker</span></li>
-                <li>Einheit: <span>Station 4</span></li>
-                <li>Ausrüstung: <span>3000 Gal. Wasser</span></li>
-            </ul>
+    </nav>
+
+    <header>
+        <h1>Zentralregister</h1>
+        <div class="header-status">Einsatzfuhrpark - Asset Management</div>
+    </header>
+
+    <div class="container">
+        <div class="fleet-grid" id="fleetGrid">
+            
+            <!-- FEUERWEHR: fdtank -->
+            <div class="card fire" data-dept="fire">
+                <div class="card-image">
+                    <span class="status-badge">Einsatzbereit</span>
+                    <img src="image_7256dc.jpg" alt="fdtank" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="image-error" style="display:none;">
+                        <strong>BILD NICHT GEFUNDEN</strong>
+                        <p>image_7256dc.jpg</p>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="v-meta">
+                        <span class="v-dept">LSCFD - Station 4</span>
+                    </div>
+                    <h3 class="v-name">fdtank</h3>
+                    <span class="v-type">Heavy Water Tender</span>
+                    
+                    <div class="v-stats">
+                        <div class="stat-item">Besatzung<b>1-2 Personen</b></div>
+                        <div class="stat-item">Tankinhalt<b>3000 Gal.</b></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FEUERWEHR: nsandbrush4 -->
+            <div class="card fire" data-dept="fire">
+                <div class="card-image">
+                    <span class="status-badge">Einsatzbereit</span>
+                    <img src="image_72ce69.jpg" alt="nsandbrush4" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="image-error" style="display:none;">
+                        <strong>BILD NICHT GEFUNDEN</strong>
+                        <p>image_72ce69.jpg</p>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="v-meta">
+                        <span class="v-dept">LSCFD - Wildfire Unit</span>
+                    </div>
+                    <h3 class="v-name">nsandbrush4</h3>
+                    <span class="v-type">Geländegängiges Löschfahrzeug</span>
+                    
+                    <div class="v-stats">
+                        <div class="stat-item">Antrieb<b>Allrad 4x4</b></div>
+                        <div class="stat-item">Einsatzgebiet<b>Offroad / Bush</b></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- POLIZEI: Platzhalter -->
+            <div class="card police" data-dept="police">
+                <div class="card-image">
+                    <span class="status-badge">Im Dienst</span>
+                    <div class="image-error">
+                        <strong>KEIN BILD VORHANDEN</strong>
+                        <p>LSPD Streifenwagen</p>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="v-meta">
+                        <span class="v-dept">LSPD - Patrol</span>
+                    </div>
+                    <h3 class="v-name">lspd_cruiser</h3>
+                    <span class="v-type">Standard Interceptor</span>
+                    
+                    <div class="v-stats">
+                        <div class="stat-item">Motor<b>V8 High Perf.</b></div>
+                        <div class="stat-item">Status<b>Patrouille</b></div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 
-    <!-- Fahrzeug: nsandbrush4 -->
-    <div class="vehicle-card">
-        <div class="status-badge">Einsatzbereit</div>
-        <div class="image-box">
-            <img src="image_72ce69.jpg" alt="nsandbrush4" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <div class="image-placeholder" style="display:none;">
-                ⚠️ <strong>Bildfehler</strong><br>
-                Datei "image_72ce69.jpg" nicht gefunden.<br>
-                <small>Prüfe, ob Bild und HTML im selben Ordner liegen.</small>
-            </div>
-        </div>
-        <div class="info-box">
-            <h2 class="vehicle-id">nsandbrush4</h2>
-            <ul class="specs">
-                <li>Typ: <span>Brush Unit (Geländewagen)</span></li>
-                <li>Einheit: <span>Wildfire Division</span></li>
-                <li>Besonderheit: <span>Allradantrieb</span></li>
-            </ul>
-        </div>
-    </div>
+    <footer>
+        &copy; 2024 SAN ANDREAS GOVERNMENT - INTERNAL FLEET SYSTEM
+    </footer>
 
-</div>
+    <script>
+        function filterFleet(dept, btn) {
+            const cards = document.querySelectorAll('.card');
+            const buttons = document.querySelectorAll('.nav-links button');
+            const nav = document.getElementById('navbar');
+            
+            // Buttons zurücksetzen
+            buttons.forEach(b => b.classList.remove('active-fire', 'active-police'));
+            
+            // Navbar Farbe und aktiven Button anpassen
+            if(dept === 'fire') {
+                btn.classList.add('active-fire');
+                nav.style.borderBottomColor = 'var(--primary-red)';
+            } else if(dept === 'police') {
+                btn.classList.add('active-police');
+                nav.style.borderBottomColor = 'var(--primary-blue)';
+            } else {
+                btn.classList.add('active-fire');
+                nav.style.borderBottomColor = 'var(--primary-red)';
+            }
 
+            // Karten filtern
+            cards.forEach(card => {
+                if (dept === 'all' || card.getAttribute('data-dept') === dept) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
 </body>
 </html>
