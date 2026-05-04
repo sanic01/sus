@@ -77,7 +77,7 @@
 
         .nav-links button.active-red { border-bottom-color: var(--primary-red); color: var(--primary-red) !important; }
         .nav-links button.active-blue { border-bottom-color: var(--primary-blue); color: var(--primary-blue) !important; }
-        .nav-links button.active-yellow { border-bottom-color: var(--accent-yellow); color: var(--accent-yellow) !important; }
+        .nav-links button.active-yellow { border-bottom-color: var(--accent-yellow) !important; color: var(--accent-yellow) !important; }
 
         /* Sektionen */
         .page-section {
@@ -89,140 +89,278 @@
             display: block;
         }
 
-        /* Hero Bereich */
+        /* Homepage Styling */
         .hero {
-            height: 30vh;
-            background-position: center;
-            background-size: cover;
+            height: 50vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?q=80&w=2070') center/cover;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             padding: 0 20px;
-            position: relative;
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.7);
-            z-index: 1;
+        .hero h1 {
+            font-size: 3.5rem;
+            margin: 0;
+            letter-spacing: 10px;
+            text-transform: uppercase;
+            color: white;
         }
 
-        .hero h1 { 
-            font-size: 2.5rem; 
-            margin: 0; 
-            letter-spacing: 8px; 
-            text-transform: uppercase; 
-            color: white; 
-            position: relative;
-            z-index: 2;
+        .hero p {
+            color: var(--accent-yellow);
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin-top: 20px;
         }
 
-        /* Spezifische Hero Hintergründe */
-        .hero-home { background-image: url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?q=80&w=2070'); }
-        .hero-forms { background-image: url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=2070'); }
+        /* Forms Hero Special Styling */
+        .hero-forms {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=2070') center/cover;
+        }
 
-        /* Antrags-Auswahl Karten */
-        .forms-selection {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        .dept-overview {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding: 60px 20px;
+            flex-wrap: wrap;
+        }
+
+        .dept-card {
+            width: 350px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            border: 1px solid #333;
+            transition: transform 0.3s, border-color 0.3s;
+            cursor: pointer;
+        }
+
+        .dept-card:hover { transform: scale(1.05); }
+        .dept-card.fire-hub { border-bottom: 5px solid var(--primary-red); }
+        .dept-card.police-hub { border-bottom: 5px solid var(--primary-blue); }
+        .dept-card.form-hub { border-bottom: 5px solid var(--accent-yellow); }
+
+        .dept-card h2 { margin-top: 0; font-size: 1.8rem; color: white; }
+        .dept-card p { color: #888; margin-bottom: 30px; font-size: 0.9rem; }
+        .dept-card .label { color: var(--accent-yellow); font-size: 0.7rem; font-weight: bold; text-transform: uppercase; margin-bottom: 10px; display: block; }
+
+        .btn-hub {
+            padding: 12px 30px;
+            border-radius: 5px;
+            border: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .btn-red { background: var(--primary-red); color: white; }
+        .btn-blue { background: var(--primary-blue); color: white; }
+        .btn-yellow { background: var(--accent-yellow); color: #000; }
+
+        /* Hub Header */
+        .hub-header {
+            padding: 80px 20px;
+            text-align: center;
+            background: #121416;
+        }
+
+        .sub-nav {
+            display: flex;
+            justify-content: center;
             gap: 20px;
-            max-width: 1000px;
-            margin: 40px auto;
+            margin-top: -30px;
+            padding-bottom: 50px;
+        }
+
+        .sub-btn {
+            background: #25282a;
+            color: #fff;
+            border: 1px solid #444;
+            padding: 15px 40px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            text-align: center;
+            min-width: 180px;
+        }
+
+        .sub-btn:hover {
+            background: #333;
+            border-color: var(--accent-yellow);
+        }
+
+        .sub-btn span {
+            display: block;
+            font-size: 0.7rem;
+            color: var(--accent-yellow);
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        /* Gesetzbuch Styling */
+        .law-container {
+            max-width: 1100px;
+            margin: 0 auto 50px auto;
             padding: 0 20px;
         }
 
-        .form-type-card {
+        .search-bar {
+            width: 100%;
+            padding: 15px;
+            background: #25282a;
+            border: 1px solid #444;
+            border-radius: 8px;
+            color: white;
+            margin-bottom: 30px;
+            font-size: 1rem;
+        }
+
+        .law-section {
             background: var(--card-bg);
-            border: 1px solid #333;
             border-radius: 12px;
-            padding: 30px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            overflow: hidden;
+            margin-bottom: 40px;
+            border: 1px solid #333;
         }
 
-        .form-type-card:hover {
-            border-color: var(--accent-yellow);
-            transform: translateY(-5px);
-            background: rgba(241, 196, 15, 0.05);
+        .law-section-header {
+            background: #25282a;
+            padding: 15px 25px;
+            border-bottom: 2px solid var(--primary-blue);
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--primary-blue);
         }
 
-        .form-type-card h3 { color: var(--accent-yellow); margin-bottom: 15px; }
-        .form-type-card p { color: #888; font-size: 0.9rem; margin-bottom: 20px; }
+        .law-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .law-table th, .law-table td {
+            padding: 15px 25px;
+            text-align: left;
+            border-bottom: 1px solid #2a2a2a;
+        }
+
+        .law-table th {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: #666;
+            background: #1a1c1e;
+        }
+
+        .law-table tr:hover {
+            background: rgba(255,255,255,0.02);
+        }
+
+        .law-id { font-weight: bold; color: var(--accent-yellow); width: 60px; }
+        .law-name { font-weight: bold; width: 250px; }
+        .law-price { color: #27ae60; font-weight: bold; }
+        .law-time { color: #e67e22; font-weight: bold; }
+
+        /* Fleet Grid */
+        .container {
+            max-width: 1300px;
+            margin: 0 auto 50px auto;
+            padding: 0 30px;
+        }
+
+        .fleet-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 35px;
+        }
+
+        @media (max-width: 1100px) { .fleet-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 750px) { .fleet-grid { grid-template-columns: 1fr; } }
+
+        /* Fahrzeugkarten */
+        .card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            border: 1px solid #2a2a2a;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+
+        .card.fire { border-top: 5px solid var(--primary-red); }
+        .card.police { border-top: 5px solid var(--primary-blue); }
+
+        .card:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(0,0,0,0.7); }
+        .card.fire:hover { border-color: var(--primary-red); background-color: #241616; }
+        .card.police:hover { border-color: var(--primary-blue); background-color: #161a24; }
+
+        .card-image { width: 100%; height: 200px; background: #111; position: relative; }
+        .card-image img { width: 100%; height: 100%; object-fit: cover; }
+
+        .image-error {
+            position: absolute; inset: 0; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; padding: 20px;
+            text-align: center; font-size: 0.75rem; background: #1a1a1a; color: #666;
+        }
+
+        .status-badge {
+            position: absolute; top: 15px; left: 15px; background: #27ae60;
+            color: white; padding: 4px 12px; border-radius: 4px;
+            font-size: 0.65rem; font-weight: bold; text-transform: uppercase;
+            z-index: 2;
+        }
+
+        .card-content { padding: 25px; }
+        .v-name { font-size: 1.4rem; margin: 0; color: #fff; font-weight: 800; }
+        .v-type { color: #888; font-size: 0.85rem; margin-top: 5px; display: block; font-weight: 600; margin-bottom: 15px; }
+
+        .v-stats {
+            padding-top: 15px; border-top: 1px solid #2a2a2a;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+        }
+
+        .stat-item { font-size: 0.7rem; color: #666; text-transform: uppercase; letter-spacing: 1px; }
+        .stat-item b { color: #ccc; display: block; font-size: 0.85rem; margin-top: 2px; text-transform: none; }
+        .stat-full { grid-column: span 2; }
 
         /* Formular Styling */
-        .form-container {
+        .form-box {
             max-width: 800px;
-            margin: 40px auto;
+            margin: 50px auto;
             background: var(--card-bg);
             padding: 40px;
             border-radius: 12px;
             border: 1px solid #333;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            position: relative;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
         }
-
-        .back-btn {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: #25282a;
-            color: #888;
-            border: 1px solid #444;
-            padding: 5px 15px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.8rem;
-        }
-
-        .back-btn:hover { color: white; border-color: #666; }
 
         .form-group { margin-bottom: 25px; }
-        .form-group label { display: block; margin-bottom: 8px; font-size: 0.85rem; color: #aaa; text-transform: uppercase; font-weight: bold; }
-        
+        .form-group label { display: block; margin-bottom: 8px; font-size: 0.8rem; color: #aaa; text-transform: uppercase; font-weight: bold; }
         .form-group input, .form-group select, .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            background: #25282a;
-            border: 1px solid #444;
-            border-radius: 6px;
-            color: white;
-            font-size: 1rem;
-            box-sizing: border-box;
+            width: 100%; padding: 12px; background: #25282a; border: 1px solid #444; border-radius: 6px; color: white; font-size: 1rem; box-sizing: border-box;
         }
+        .form-group textarea { height: 120px; resize: vertical; }
 
-        .form-group textarea { height: 100px; resize: vertical; }
-
-        .submit-btn {
-            width: 100%;
-            padding: 18px;
-            background: var(--accent-yellow);
-            color: #000;
-            border: none;
-            border-radius: 6px;
-            font-weight: 900;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .submit-btn:hover { background: #d4ac0d; letter-spacing: 1px; }
-        .submit-btn:disabled { background: #555; cursor: not-allowed; }
-
-        .status-msg { margin-top: 20px; padding: 15px; border-radius: 6px; display: none; text-align: center; font-weight: bold; }
+        .status-msg { margin-top: 20px; padding: 15px; border-radius: 6px; text-align: center; display: none; font-weight: bold; }
         .status-success { background: rgba(39, 174, 96, 0.2); color: #27ae60; border: 1px solid #27ae60; display: block; }
         .status-error { background: rgba(192, 57, 43, 0.2); color: #c0392b; border: 1px solid #c0392b; display: block; }
+
+        footer {
+            margin-top: auto; padding: 40px; text-align: center;
+            background: #0a0a0a; font-size: 0.75rem; color: #444; border-top: 1px solid #1a1a1a;
+        }
 
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
-        footer { margin-top: auto; padding: 40px; text-align: center; background: #0a0a0a; font-size: 0.75rem; color: #444; border-top: 1px solid #1a1a1a; }
     </style>
 </head>
 <body>
@@ -237,153 +375,458 @@
         </div>
     </nav>
 
-    <!-- STARTSEITE -->
+    <!-- HOMEPAGE -->
     <div id="page-home" class="page-section active">
-        <div class="hero hero-home">
-            <h1>Justiz & Sicherheit</h1>
+        <div class="hero">
+            <h1>San Andreas</h1>
+            <p>Zentrales Informationsportal für die Sicherheitsbehörden des Staates.</p>
         </div>
-        <div style="text-align: center; padding: 50px;">
-            <h2>Zentrales Dienstportal</h2>
-            <p>Wählen Sie oben einen Bereich aus.</p>
+        <div class="dept-overview">
+            <div class="dept-card fire-hub" onclick="showPage('fire-hub')">
+                <h2>LS Fire Dept.</h2>
+                <p>Übersicht über Löschzüge, Standorte und technisches Equipment.</p>
+                <button class="btn-hub btn-red">Abteilung öffnen</button>
+            </div>
+            <div class="dept-card police-hub" onclick="showPage('police-hub')">
+                <h2>LS Police Dept.</h2>
+                <p>Einsatzmittel-Register und strategische Ressourcenverwaltung.</p>
+                <button class="btn-hub btn-blue">Abteilung öffnen</button>
+            </div>
         </div>
     </div>
 
-    <!-- ANTRAGS-AUSWAHL -->
+    <!-- FEUERWEHR HUB -->
+    <div id="page-fire-hub" class="page-section">
+        <div class="hub-header">
+            <h1 style="color: var(--primary-red);">L.S.C. Fire Department</h1>
+            <p>Verwaltungszentrum</p>
+        </div>
+        <div class="sub-nav">
+            <div class="sub-btn" onclick="showPage('fire-fleet')">
+                <span>Kategorie</span>
+                Fuhrparkliste
+            </div>
+            <div class="sub-btn" style="opacity: 0.3; cursor: not-allowed;">
+                <span>Kategorie</span>
+                Personal (Gesperrt)
+            </div>
+        </div>
+    </div>
+
+    <!-- POLIZEI HUB -->
+    <div id="page-police-hub" class="page-section">
+        <div class="hub-header">
+            <h1 style="color: var(--primary-blue);">Los Santos Police Dept.</h1>
+            <p>Einsatzleitung</p>
+        </div>
+        <div class="sub-nav">
+            <div class="sub-btn" onclick="showPage('police-fleet')">
+                <span>Kategorie</span>
+                Fuhrparkliste
+            </div>
+            <div class="sub-btn" onclick="showPage('police-laws')">
+                <span>Kategorie</span>
+                Gesetzbuch
+            </div>
+        </div>
+    </div>
+
+    <!-- ANTRÄGE HUB -->
     <div id="page-forms" class="page-section">
         <div class="hero hero-forms">
             <h1>Antragsportal</h1>
+            <p>Offizielle Formulare für rechtliche Eingaben</p>
         </div>
         
-        <div id="formSelector" class="forms-selection">
-            <div class="form-type-card" onclick="openSpecificForm('einspruch')">
-                <h3>Einspruch gegen das Gericht</h3>
-                <p>Einspruch gegen ein bereits gefälltes Urteil oder eine gerichtliche Entscheidung einlegen.</p>
-                <button class="submit-btn" style="padding: 10px; font-size: 0.7rem;">Auswählen</button>
-            </div>
-            
-            <div class="form-type-card" style="opacity: 0.5; cursor: not-allowed;">
-                <h3>Versetzung (Bald verfügbar)</h3>
-                <p>Antrag auf Versetzung in eine andere Behörde oder Abteilung.</p>
+        <div id="form-selector" class="dept-overview">
+            <div class="dept-card form-hub" onclick="openSpecificForm('einspruch')">
+                <span class="label">Justiz</span>
+                <h2>Einspruch gegen das Gericht</h2>
+                <p>Einspruch gegen ein bereits gefälltes Urteil oder eine Entscheidung einlegen.</p>
+                <button class="btn-hub btn-yellow">Formular öffnen</button>
             </div>
         </div>
 
-        <!-- FORMULAR: EINSPRUCH GERICHT -->
-        <div id="formEinspruch" class="form-container" style="display: none;">
-            <button class="back-btn" onclick="resetForms()">Zurück zur Auswahl</button>
-            <h2 style="color: var(--accent-yellow);">Einspruch gegen das Gericht</h2>
+        <!-- FORMULAR: EINSPRUCH -->
+        <div id="form-einspruch-container" class="form-box" style="display: none;">
+            <button onclick="resetForms()" style="float: right; background: none; border: none; color: #888; cursor: pointer; font-weight: bold;">[ ZURÜCK ]</button>
+            <h2 style="color: var(--accent-yellow); margin-top: 0;">Einspruch gegen das Gericht</h2>
             
-            <form id="einspruchForm">
+            <form id="appealForm">
                 <div class="form-group">
-                    <label for="fullName">Vor- und Nachname</label>
-                    <input type="text" id="fullName" placeholder="Dein Charaktername" required>
+                    <label>Vor- und Nachname</label>
+                    <input type="text" id="form-name" required>
                 </div>
-
                 <div class="form-group">
-                    <label for="trialDate">Datum der Gerichtsverhandlung</label>
-                    <input type="date" id="trialDate" required>
+                    <label>Datum der Gerichtsverhandlung</label>
+                    <input type="date" id="form-date" required>
                 </div>
-
                 <div class="form-group">
-                    <label for="charges">Anklagepunkte | Wieso kam es zum Gerichtsprozess?</label>
-                    <textarea id="charges" placeholder="Liste der Anklagepunkte..." required></textarea>
+                    <label>Anklagepunkte / Hintergrund</label>
+                    <textarea id="form-charges" required></textarea>
                 </div>
-
                 <div class="form-group">
-                    <label for="verdict">Urteil des Gerichts</label>
-                    <textarea id="verdict" placeholder="Was wurde vom Gericht beschlossen?" required></textarea>
+                    <label>Urteil des Gerichts</label>
+                    <textarea id="form-verdict" required></textarea>
                 </div>
-
                 <div class="form-group">
-                    <label for="appealReason">Begründung des Einspruchs</label>
-                    <textarea id="appealReason" placeholder="Warum legst du Einspruch ein? Neue Beweise?" required></textarea>
+                    <label>Begründung des Einspruchs</label>
+                    <textarea id="form-reason" required></textarea>
                 </div>
-
                 <div class="form-group">
-                    <label for="personSelect">Zuständiger Beamter / Richter</label>
-                    <select id="personSelect" onchange="toggleOtherField(this.value)" required>
+                    <label>Zuständiger Richter / Beamter</label>
+                    <select id="form-person" onchange="toggleOther(this.value)">
                         <option value="" disabled selected>Person auswählen...</option>
-                        <option value="Sonstiges">Sonstiges (Manueller Eintrag)</option>
+                        <option value="Unbekannt">Unbekannt</option>
+                        <option value="Sonstiges">Sonstiges (Name eingeben)</option>
                     </select>
                 </div>
-
-                <div class="form-group" id="otherPersonGroup" style="display: none;">
-                    <label for="otherPerson">Name der Person (Sonstiges)</label>
-                    <input type="text" id="otherPerson" placeholder="Name eingeben...">
+                <div id="other-input-group" class="form-group" style="display: none;">
+                    <label>Name des Beamten</label>
+                    <input type="text" id="form-other-name">
                 </div>
-
-                <button type="submit" class="submit-btn" id="submitBtn">Einspruch offiziell einreichen</button>
+                
+                <button type="submit" id="submit-btn" class="btn-hub btn-yellow" style="width: 100%; padding: 18px; margin-top: 10px;">Einspruch offiziell einreichen</button>
             </form>
-
-            <div id="statusBox" class="status-msg"></div>
+            <div id="form-status" class="status-msg"></div>
         </div>
     </div>
 
-    <!-- PLATZHALTER WEITERE SEITEN -->
-    <div id="page-fire-hub" class="page-section"><div style="padding: 100px; text-align: center;"><h1>Feuerwehr</h1></div></div>
-    <div id="page-police-hub" class="page-section"><div style="padding: 100px; text-align: center;"><h1>Polizei</h1></div></div>
+    <!-- GESETZBUCH POLIZEI -->
+    <div id="page-police-laws" class="page-section">
+        <div class="hub-header">
+            <h2 style="color: var(--primary-blue); text-transform: uppercase;">Strafgesetzbuch (StGB)</h2>
+            <button onclick="showPage('police-hub')" style="background:none; border:1px solid #444; color:#888; padding:5px 15px; cursor:pointer; border-radius:4px; margin-top:10px;"> Zurück zum Hub</button>
+        </div>
+        
+        <div class="law-container">
+            <input type="text" class="search-bar" placeholder="Nach Paragraphen oder Tatbestand suchen..." onkeyup="searchLaws(this.value)">
+            
+            <!-- Sektion: Definitionen -->
+            <div class="law-section">
+                <div class="law-section-header">Abschnitt 0: Definitionen</div>
+                <table class="law-table">
+                    <thead>
+                        <tr>
+                            <th>§</th>
+                            <th>Begriff</th>
+                            <th>Definition</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="law-row">
+                            <td class="law-id">0.1</td>
+                            <td class="law-name">Rauschmittel</td>
+                            <td>Unter Rauschmittel fallen alle Substanzen, die die Wahrnehmung oder das Reaktionsvermögen beeinflussen. Dazu zählen insbesondere <b>Alkohol</b>, Marihuana sowie alle weiteren illegalen Betäubungsmittel.</td>
+                        </tr>
+                        <tr class="law-row">
+                            <td class="law-id">0.2</td>
+                            <td class="law-name">Waffenklassen</td>
+                            <td>
+                                Waffen werden in folgende Kategorien unterteilt:<br>
+                                <b>Klasse A:</b> Handfeuerwaffen (Pistolen, Revolver)<br>
+                                <b>Klasse B:</b> Leichte Maschinengewehre (MP, SMG)<br>
+                                <b>Klasse C:</b> Schwere Sturmgewehre (AR, Karabiner)<br>
+                                <b>Klasse D:</b> Schrotflinten (Shotguns)<br>
+                                <b>Klasse E:</b> Explosive Waffen (Granaten, RPGs, C4)
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Sektion: Allgemeine Bestimmungen & LEO Infos -->
+            <div class="law-section">
+                <div class="law-section-header">Abschnitt 1: Allgemeine Bestimmungen & Befugnisse</div>
+                <table class="law-table">
+                    <thead>
+                        <tr>
+                            <th>§</th>
+                            <th>Bezeichnung</th>
+                            <th>Inhalt / Regelung</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="law-row">
+                            <td class="law-id">1.1</td>
+                            <td class="law-name">LEO Befugnisse (StVO)</td>
+                            <td>Jeder <b>LEO (Law Enforcement Officer)</b> ist berechtigt, bei Verstößen gegen die StVO Punkte gegen den Fahrzeughalter zu verhängen. Die Anzahl der Punkte liegt im Ermessen des Beamten (Schwere der Tat), beträgt jedoch <b>maximal 3 Punkte</b> pro Verstoß.</td>
+                        </tr>
+                        <tr class="law-row">
+                            <td class="law-id">1.2</td>
+                            <td class="law-name">Führerscheinentzug</td>
+                            <td>Sobald ein Bürger eine kumulierte Punktzahl von <b>10 Punkten</b> erreicht, wird die Fahrerlaubnis mit sofortiger Wirkung entzogen. Eine Neubeantragung ist erst nach Ablauf einer Sperrfrist möglich.</td>
+                        </tr>
+                        <tr class="law-row">
+                            <td class="law-id">1.3</td>
+                            <td class="law-name">Strafmaß & Ermessensspielraum</td>
+                            <td>Ein LEO darf die Strafe innerhalb des gesetzlichen Rahmen selbst festlegen. Das verhängte <b>Bußgeld</b> oder die <b>Haftzeit</b> darf die in diesem Katalog aufgeführten Vorgaben jedoch <b>nicht überschreiten</b>. Die angegebenen Werte gelten als Höchstmaß.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Sektion: Straßenverkehrsordnung -->
+            <div class="law-section">
+                <div class="law-section-header">Abschnitt 2: Straßenverkehrsordnung (StVO)</div>
+                <table class="law-table" id="table-laws-2">
+                    <thead>
+                        <tr>
+                            <th>§</th>
+                            <th>Tatbestand</th>
+                            <th>Beschreibung</th>
+                            <th>Bußgeld</th>
+                            <th>Haftzeit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="law-row">
+                            <td class="law-id">2.1</td>
+                            <td class="law-name">Fahren ohne Führerschein</td>
+                            <td>Führen eines KFZ ohne gültige Fahrerlaubnis.</td>
+                            <td class="law-price">$5.000</td>
+                            <td class="law-time">-</td>
+                        </tr>
+                        <tr class="law-row">
+                            <td class="law-id">2.2</td>
+                            <td class="law-name">Überhöhte Geschwindigkeit</td>
+                            <td>Überschreiten der zulässigen Höchstgeschwindigkeit.</td>
+                            <td class="law-price">$1.500</td>
+                            <td class="law-time">-</td>
+                        </tr>
+                        <tr class="law-row">
+                            <td class="law-id">2.3</td>
+                            <td class="law-name">Falschparken</td>
+                            <td>Abstellen des Fahrzeugs in Parkverbotszonen.</td>
+                            <td class="law-price">$500</td>
+                            <td class="law-time">-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Sektion: Strafgesetzbuch -->
+            <div class="law-section">
+                <div class="law-section-header">Abschnitt 3: Strafgesetzbuch (StGB)</div>
+                <table class="law-table" id="table-laws-3">
+                    <thead>
+                        <tr>
+                            <th>§</th>
+                            <th>Tatbestand</th>
+                            <th>Beschreibung</th>
+                            <th>Bußgeld</th>
+                            <th>Haftzeit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="law-row">
+                            <td class="law-id">3.1</td>
+                            <td class="law-name">Beleidigung</td>
+                            <td>Ehrverletzende Äußerungen gegenüber Bürgern/Beamten.</td>
+                            <td class="law-price">$2.000</td>
+                            <td class="law-time">-</td>
+                        </tr>
+                        <tr class="law-row">
+                            <td class="law-id">3.2</td>
+                            <td class="law-name">Körperverletzung</td>
+                            <td>Physische Gewaltanwendung gegen eine Person.</td>
+                            <td class="law-price">$10.000</td>
+                            <td class="law-time">15 Min</td>
+                        </tr>
+                        <tr class="law-row">
+                            <td class="law-id">3.3</td>
+                            <td class="law-name">Widerstand gegen Staatsgewalt</td>
+                            <td>Missachtung polizeilicher Anweisungen oder Flucht.</td>
+                            <td class="law-price">$7.500</td>
+                            <td class="law-time">10 Min</td>
+                        </tr>
+                        <tr class="law-row">
+                            <td class="law-id">3.4</td>
+                            <td class="law-name">Mord / Totschlag</td>
+                            <td>Vorsätzliche Tötung einer Person.</td>
+                            <td class="law-price">$50.000</td>
+                            <td class="law-time">60 Min</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- FUHRPARK FEUERWEHR -->
+    <div id="page-fire-fleet" class="page-section">
+        <div class="hub-header">
+            <h2 style="color: var(--primary-red); text-transform: uppercase;">Fuhrpark: Feuerwehr</h2>
+            <button onclick="showPage('fire-hub')" style="background:none; border:1px solid #444; color:#888; padding:5px 15px; cursor:pointer; border-radius:4px; margin-top:10px;"> Zurück zum Hub</button>
+        </div>
+        <div class="container">
+            <div class="fleet-grid">
+                <!-- LSFD Firetruck -->
+                <div class="card fire">
+                    <div class="card-image">
+                        <span class="status-badge">Einsatzbereit</span>
+                        <img src="image_7256dc.jpg" alt="LSFD Firetruck" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-error" style="display:none;"><strong>BILD FEHLT</strong><p>image_7256dc.jpg</p></div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="v-name">LSFD Firetruck</h3>
+                        <span class="v-type">Großes Löschfahrzeug</span>
+                        <div class="v-stats">
+                            <div class="stat-item">Modell<b>fdtank</b></div>
+                            <div class="stat-item">Sitzplätze<b>7 Personen</b></div>
+                            <div class="stat-item">Tankgröße<b>9000L</b></div>
+                            <div class="stat-item stat-full">Besonderheit<b>Großer Wassertank</b></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fire Support Pickup -->
+                <div class="card fire">
+                    <div class="card-image">
+                        <span class="status-badge">Einsatzbereit</span>
+                        <img src="image_72ce69.jpg" alt="Fire Support Pickup" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-error" style="display:none;"><strong>BILD FEHLT</strong><p>image_72ce69.jpg</p></div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="v-name">Fire Support Pickup</h3>
+                        <span class="v-type">Pickup Lösch Fahrzeug</span>
+                        <div class="v-stats">
+                            <div class="stat-item">Modell<b>nsandbrush4</b></div>
+                            <div class="stat-item">Sitzplätze<b>4 Personen</b></div>
+                            <div class="stat-item">Tankgröße<b>2500L</b></div>
+                            <div class="stat-item stat-full">Besonderheit<b>Geländetauglich</b></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DLK 24/02 -->
+                <div class="card fire">
+                    <div class="card-image">
+                        <span class="status-badge">Einsatzbereit</span>
+                        <img src="dlk01.jpg" alt="DLK 24/02" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-error" style="display:none;"><strong>BILD FEHLT</strong><p>dlk01.jpg</p></div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="v-name">DLK 24/02</h3>
+                        <span class="v-type">Drehleiter</span>
+                        <div class="v-stats">
+                            <div class="stat-item">Modell<b>mmladder</b></div>
+                            <div class="stat-item">Sitzplätze<b>5 Personen</b></div>
+                            <div class="stat-item">Tankgröße<b>--</b></div>
+                            <div class="stat-item stat-full">Besonderheit<b>Besitzt eine Große Drehleiter</b></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FUHRPARK POLIZEI -->
+    <div id="page-police-fleet" class="page-section">
+        <div class="hub-header">
+            <h2 style="color: var(--primary-blue); text-transform: uppercase;">Fuhrpark: Polizei</h2>
+            <button onclick="showPage('police-hub')" style="background:none; border:1px solid #444; color:#888; padding:5px 15px; cursor:pointer; border-radius:4px; margin-top:10px;"> Zurück zum Hub</button>
+        </div>
+        <div class="container">
+            <div class="fleet-grid">
+                <!-- RSX Highspeed Fahrzeug -->
+                <div class="card police">
+                    <div class="card-image">
+                        <span class="status-badge">Im Dienst</span>
+                        <img src="high1.png" alt="RSX Highspeed Vehicle" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-error" style="display:none;"><strong>BILD FEHLT</strong><p>high1.png</p></div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="v-name">RSX</h3>
+                        <span class="v-type">Highspeed Fahrzeug</span>
+                        <div class="v-stats">
+                            <div class="stat-item">Modell<b>politalirsx</b></div>
+                            <div class="stat-item">Sitzplätze<b>2 Personen</b></div>
+                            <div class="stat-item stat-full">Besonderheit<b>Besitzt nur Lichtsignale, keine Sirene</b></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <footer>
-        &copy; 2024 SAN ANDREAS GOVERNMENT - JUDICIAL SYSTEM
+        &copy; 2024 SAN ANDREAS GOVERNMENT - INTERNAL FLEET SYSTEM
     </footer>
 
     <script>
-        const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1500646049134415963/BBYBU8hgZcySoP4qnjxuWAplv2N_8QP3tH6yjYQqBdZqhtG-WHav4VCKqoPkSyKrwP9H"; 
+        const DISCORD_WEBHOOK = "https://discord.com/api/webhooks/1500646049134415963/BBYBU8hgZcySoP4qnjxuWAplv2N_8QP3tH6yjYQqBdZqhtG-WHav4VCKqoPkSyKrwP9H";
 
         function showPage(pageId) {
             const sections = document.querySelectorAll('.page-section');
             sections.forEach(s => s.classList.remove('active'));
+
             const targetPage = document.getElementById('page-' + pageId);
             if(targetPage) targetPage.classList.add('active');
 
             const navButtons = document.querySelectorAll('.nav-links button');
             navButtons.forEach(b => b.classList.remove('active', 'active-red', 'active-blue', 'active-yellow'));
 
-            if(pageId === 'home') document.getElementById('nav-home').classList.add('active');
-            else if(pageId.includes('fire')) document.getElementById('nav-fire').classList.add('active-red');
-            else if(pageId.includes('police')) document.getElementById('nav-police').classList.add('active-blue');
-            else if(pageId === 'forms') {
+            const nav = document.getElementById('navbar');
+            const root = document.querySelector(':root');
+
+            if(pageId.includes('home')) {
+                document.getElementById('nav-home').classList.add('active');
+                root.style.setProperty('--current-color', 'var(--primary-red)'); 
+            } else if(pageId.includes('fire')) {
+                document.getElementById('nav-fire').classList.add('active-red');
+                root.style.setProperty('--current-color', 'var(--primary-red)');
+            } else if(pageId.includes('police')) {
+                document.getElementById('nav-police').classList.add('active-blue');
+                root.style.setProperty('--current-color', 'var(--primary-blue)');
+            } else if(pageId.includes('forms')) {
                 document.getElementById('nav-forms').classList.add('active-yellow');
+                root.style.setProperty('--current-color', 'var(--accent-yellow)');
                 resetForms();
             }
+
+            window.scrollTo({top: 0, behavior: 'smooth'});
         }
 
-        function openSpecificForm(formType) {
-            document.getElementById('formSelector').style.display = 'none';
-            if(formType === 'einspruch') {
-                document.getElementById('formEinspruch').style.display = 'block';
-            }
+        // Formular Funktionen
+        function openSpecificForm(id) {
+            document.getElementById('form-selector').style.display = 'none';
+            if(id === 'einspruch') document.getElementById('form-einspruch-container').style.display = 'block';
         }
 
         function resetForms() {
-            document.getElementById('formSelector').style.display = 'grid';
-            document.getElementById('formEinspruch').style.display = 'none';
-            document.getElementById('statusBox').style.display = 'none';
+            document.getElementById('form-selector').style.display = 'flex';
+            document.getElementById('form-einspruch-container').style.display = 'none';
+            document.getElementById('form-status').style.display = 'none';
         }
 
-        function toggleOtherField(val) {
-            const group = document.getElementById('otherPersonGroup');
-            group.style.display = (val === 'Sonstiges') ? 'block' : 'none';
+        function toggleOther(val) {
+            document.getElementById('other-input-group').style.display = (val === 'Sonstiges') ? 'block' : 'none';
         }
 
-        document.getElementById('einspruchForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const submitBtn = document.getElementById('submitBtn');
-            const statusBox = document.getElementById('statusBox');
+        // Gesetzbuch Suchfunktion
+        function searchLaws(query) {
+            query = query.toLowerCase();
+            const rows = document.querySelectorAll('.law-row');
             
-            const personChoice = document.getElementById('personSelect').value;
-            const finalPerson = (personChoice === 'Sonstiges') ? document.getElementById('otherPerson').value : personChoice;
+            rows.forEach(row => {
+                const text = row.innerText.toLowerCase();
+                if (text.includes(query)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
 
-            const data = {
-                name: document.getElementById('fullName').value,
-                date: document.getElementById('trialDate').value,
-                charges: document.getElementById('charges').value,
-                verdict: document.getElementById('verdict').value,
-                reason: document.getElementById('appealReason').value,
-                person: finalPerson || "Nicht angegeben"
-            };
-
-            submitBtn.disabled = true;
-            submitBtn.textContent = "Wird eingereicht...";
+        // Discord Submission
+        document.getElementById('appealForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submit-btn');
+            const status = document.getElementById('form-status');
+            
+            const personSel = document.getElementById('form-person').value;
+            const finalPerson = (personSel === 'Sonstiges') ? document.getElementById('form-other-name').value : personSel;
 
             const payload = {
                 username: "Justiz-Verwaltung",
@@ -391,36 +834,39 @@
                     title: "⚖️ Neuer Gerichtlicher Einspruch",
                     color: 16753920,
                     fields: [
-                        { name: "👤 Kläger", value: data.name, inline: true },
-                        { name: "📅 Datum Verhandlung", value: data.date, inline: true },
-                        { name: "👨‍⚖️ Zuständig", value: data.person, inline: true },
-                        { name: "📂 Anklage / Hintergrund", value: "```" + data.charges + "```" },
-                        { name: "📜 Urteil", value: "```" + data.verdict + "```" },
-                        { name: "❌ Begründung Einspruch", value: "```" + data.reason + "```" }
+                        { name: "👤 Kläger", value: document.getElementById('form-name').value, inline: true },
+                        { name: "📅 Datum Verhandlung", value: document.getElementById('form-date').value, inline: true },
+                        { name: "👨‍⚖️ Zuständig", value: finalPerson || "Nicht angegeben", inline: true },
+                        { name: "📂 Anklage", value: "```" + document.getElementById('form-charges').value + "```" },
+                        { name: "📜 Urteil", value: "```" + document.getElementById('form-verdict').value + "```" },
+                        { name: "❌ Begründung", value: "```" + document.getElementById('form-reason').value + "```" }
                     ],
-                    footer: { text: "San Andreas State Court • " + new Date().toLocaleString() }
+                    footer: { text: "Eingegangen am " + new Date().toLocaleString() }
                 }]
             };
 
+            btn.disabled = true;
+            btn.textContent = "Wird gesendet...";
+
             try {
-                const res = await fetch(DISCORD_WEBHOOK_URL, {
+                const response = await fetch(DISCORD_WEBHOOK, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
                 });
 
-                if (res.ok) {
-                    statusBox.textContent = "Der Einspruch wurde erfolgreich an die Justiz übermittelt.";
-                    statusBox.className = "status-msg status-success";
-                    document.getElementById('einspruchForm').reset();
-                    toggleOtherField('');
+                if(response.ok) {
+                    status.textContent = "Antrag erfolgreich übermittelt!";
+                    status.className = "status-msg status-success";
+                    document.getElementById('appealForm').reset();
+                    setTimeout(resetForms, 3000);
                 } else { throw new Error(); }
             } catch (err) {
-                statusBox.textContent = "Fehler beim Senden. Bitte erneut versuchen.";
-                statusBox.className = "status-msg status-error";
+                status.textContent = "Fehler beim Senden. Bitte erneut versuchen.";
+                status.className = "status-msg status-error";
             } finally {
-                submitBtn.disabled = false;
-                submitBtn.textContent = "Einspruch offiziell einreichen";
+                btn.disabled = false;
+                btn.textContent = "Einspruch offiziell einreichen";
             }
         });
     </script>
